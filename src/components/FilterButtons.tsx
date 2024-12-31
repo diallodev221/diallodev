@@ -5,8 +5,8 @@ const FilterButtons = ({ onFilterByCategory }: { onFilterByCategory: (category: 
 
   const filters = [
     { label: "All", value: "all" },
-    { label: "Website", value: "website" },
-    { label: "Apps", value: "mobile-app" },
+    { label: "Website", value: "web" },
+    { label: "Apps", value: "apps" },
   ];
 
   const handleFilterChange = (filter: string) => {

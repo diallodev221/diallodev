@@ -154,6 +154,11 @@ body.light-mode {
 .light-mode .portfolio-section {
 	background: var(--tj-white);
 }
+.light-mode .portfolio-box .portfolio-item {
+	background: var(--tj-off-white);
+	
+	color: var(--tj-theme-accent-1);
+}
 .light-mode .portfolio-box .portfolio-item .content-box .portfolio-title {
 	color: var(--tj-white);
 }

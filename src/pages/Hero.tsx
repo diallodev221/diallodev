@@ -1,7 +1,9 @@
 import { Link } from "react-router";
 import data from "../data.json";
+import Counter from "../components/Counter";
 
-const { professionalDetails, title, subtitles } = data.landing;
+const { professionalDetails, title, subtitles, professonalSummary } =
+  data.landing;
 const { description, cv_en, picture } = data.about;
 
 const Hero = () => {
@@ -69,14 +71,18 @@ const Hero = () => {
         </div>
 
         {/* informations details */}
-        {/* <div className="funfact-area">
+        <div className="funfact-area">
           <div className="row">
-            <Counter count={3} label="Years of Experience" suffix="+" />
-            <Counter count={5} label="Project Completed" suffix="+" />
-            <Counter count={100} label="Happy Clients" suffix="K" />
-            <Counter count={3} label="Years of Experience" suffix="+" />
+            {professonalSummary.map((summary) => (
+              <Counter
+                key={summary.label}
+                count={summary.number}
+                label={summary.label}
+                suffix={summary.suffix}
+              />
+            ))}
           </div>
-        </div> */}
+        </div>
       </div>
     </section>
   );
