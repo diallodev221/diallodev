@@ -185,5 +185,26 @@
       "liveDemo": "https://weather-demo.com"
     }
     ]
+  },
+  "contacts": {
+    "" : [
+      {
+        "label": "Phone",
+        "value": "+221 771244151",
+        "type": "phone",
+        "icon": "flaticon-phone-call"
+      },
+      {
+        "label": "Email",
+        "value": "saifoulaye.diallo0512@gmail.com",
+        "type": "email",
+        "icon": "flaticon-mail-inbox-app"
+      },
+      {
+        "label": "Address",
+        "value": "Dakar, Senegal",
+        "icon": "flaticon-location"
+      }
+    ]
   }
 }

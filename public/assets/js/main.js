@@ -67,117 +67,15 @@
 	} else {
 		console.error("onePageNav plugin is not loaded.");
 	}
-		
-		/*------------------------------------------------------
-  	/  Portfolio Gallery Carousel
-  	/------------------------------------------------------*/
-		$(".portfolio_gallery.owl-carousel").owlCarousel({
-			items: 2,
-			loop: true,
-			lazyLoad: true,
-			center: true,
-			// autoWidth: true,
-			autoplayHoverPause: true,
-			autoplay: false,
-			autoplayTimeout: 5000,
-			smartSpeed: 800,
-			margin: 30,
-			nav: false,
-			dots: true,
-			responsive: {
-				// breakpoint from 0 up
-				0: {
-					items: 1,
-					margin: 0,
-				},
-				// breakpoint from 768 up
-				768: {
-					items: 2,
-					margin: 20,
-				},
-				992: {
-					items: 2,
-					margin: 30,
-				},
-			},
-		});
+
 
 		/*------------------------------------------------------
-  	/ Testimonial Carousel
-  	/------------------------------------------------------*/
-		$(".testimonial-carousel.owl-carousel").owlCarousel({
-			loop: true,
-			margin: 30,
-			nav: false,
-			dots: true,
-			autoplay: false,
-			active: true,
-			smartSpeed: 1000,
-			autoplayTimeout: 7000,
-			responsive: {
-				0: {
-					items: 1,
-				},
-				600: {
-					items: 2,
-				},
-				1000: {
-					items: 2,
-				},
-			},
-		});
-
-		/*------------------------------------------------------
-  	/ Post Gallery Carousel
-  	/------------------------------------------------------*/
-		$(".tj-post__gallery.owl-carousel").owlCarousel({
-			items: 1,
-			loop: true,
-			margin: 30,
-			dots: false,
-			nav: true,
-			navText: [
-				'<i class="fal fa-arrow-left"></i>',
-				'<i class="fal fa-arrow-right"></i>',
-			],
-			autoplay: false,
-			smartSpeed: 1000,
-			autoplayTimeout: 3000,
-		});
-
-		/*------------------------------------------------------
-  	/  Nice Select
-  	/------------------------------------------------------*/
+	/  Nice Select
+	/------------------------------------------------------*/
 		$("select").niceSelect();
 
-		/*------------------------------------------------------
-  	/  ALL Popup
-  	/------------------------------------------------------*/
-		if ($(".popup_video").length > 0) {
-			$(`.popup_video`).lightcase({
-				transition: "elastic",
-				showSequenceInfo: false,
-				slideshow: false,
-				swipe: true,
-				showTitle: false,
-				showCaption: false,
-				controls: true,
-			});
-		}
-
-		$(".modal-popup").magnificPopup({
-			type: "inline",
-			fixedContentPos: false,
-			fixedBgPos: true,
-			overflowY: "auto",
-			closeBtnInside: true,
-			preloader: false,
-			midClick: true,
-			removalDelay: 300,
-			mainClass: "popup-mfp",
-		});
-	});
-
+	}); // <-- Add this closing bracket for document ready function
+		
 	$(window).on("load", function () {
 		/*------------------------------------------------------
   	/  WoW Js
@@ -256,55 +154,6 @@
 				.addClass(".portfolio-filter .button-group");
 			active_bg.css({ left: leftOff - menuLeft + "px", width: width + "px" });
 		}
-
-		/*------------------------------------------------------
-  	/  Funfact
-  	/------------------------------------------------------*/
-		// if ($(".odometer").length > 0) {
-		// 	$(".odometer").appear(function () {
-		// 		var odo = $(".odometer");
-		// 		odo.each(function () {
-		// 			var countNumber = $(this).attr("data-count");
-		// 			$(this).html(countNumber);
-		// 		});
-		// 	});
-		// }
-
-		// Form Validation
-		/* contact form */
-		if ($("#contact-form").length > 0) {
-			$("#contact-form").validate({
-				rules: {
-					conName: "required",
-					conEmail: {
-						required: true,
-						email: true,
-					},
-				},
-
-				messages: {
-					conName: "Enter your name.",
-					conEmail: "Enter a valid email.",
-				},
-				submitHandler: function (form) {
-					// start ajax request
-					$.ajax({
-						type: "POST",
-						url: "assets/mail/contact-form.php",
-						data: $("#contact-form").serialize(),
-						cache: false,
-						success: function (data) {
-							if (data == "Y") {
-								$("#message_sent").modal("show");
-								$("#contact-form").trigger("reset");
-							} else {
-								$("#message_fail").modal("show");
-							}
-						},
-					});
-				},
-			});
-		}
-		/* !contact form */
+		
 	});
 })(jQuery);

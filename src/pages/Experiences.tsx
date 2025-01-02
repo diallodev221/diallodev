@@ -1,4 +1,5 @@
-import { Building2, Calendar, GraduationCap } from "lucide-react";
+import { Building2, Calendar } from "lucide-react";
+import { getHumanDiff } from "../util/HelperFunctions";
 
 import data from "../data.json";
 
@@ -19,33 +20,6 @@ type ExperienceData = {
   [key: string]: Experience[];
 };
 
-const getHumanDiff = (startDate: string, endDate: string) => {
-  let str = "";
-  const start = new Date(startDate);
-  const end = endDate ? new Date(endDate) : new Date();
-  let years = end.getFullYear() - start.getFullYear();
-  let months = end.getMonth() - start.getMonth();
-
-  if (months < 0) {
-    years -= 1;
-    months += 12;
-  }
-
-  if (years > 0) {
-    str += years + " year";
-    if (years > 1) str += "s";
-  }
-
-  if (str.length > 0) str += ", ";
-
-  if (months > 0) {
-    str += months + " month";
-    if (months > 1) str += "s";
-  }
-
-  return str;
-};
-
 const { experience } = data as { experience: ExperienceData };
 
 type ExperienceWidgetProps = {
@@ -57,7 +31,6 @@ type ExperienceWidgetProps = {
   city: string;
   state: string;
   country: string;
-  url: string;
   thumbnail: string;
 };
 
@@ -70,7 +43,6 @@ const ExperienceWidget = ({
   city,
   state,
   country,
-  url,
   thumbnail,
 }: ExperienceWidgetProps) => {
   return (
@@ -106,59 +78,59 @@ const ExperienceWidget = ({
   );
 };
 
-const EducatorWidget = () => {
-  const educationsData = [
-    {
-      period: "2020 - 2023",
-      course: "Bechalor's Degree in Computer Science",
-      institution: "Université Numérique Cheikh Hamidou Kane (UNCHK)",
-      logo: "https://media.licdn.com/dms/image/v2/D4E0BAQFPgnXXtnQcrQ/company-logo_200_200/company-logo_200_200/0/1692698637205?e=1743033600&v=beta&t=_vnNVQPr_J8kOeY5MvqPDf9Uo9ZZ61AdF6g4xnz61Ic",
-    },
-    {
-      period: "Nov 2024",
-      course: "Software Engineering Essentials",
-      institution: "Coursera",
-      logo: "https://media.licdn.com/dms/image/v2/C4D0BAQGexnfBxeEG-g/company-logo_100_100/company-logo_100_100/0/1630530042036/coursera_logo?e=1743033600&v=beta&t=KW9eonmjcv6Eo2Y6hSFWSiJ8phtNl9vcKJnLDJSTcYQ",
-    },
-    {
-      period: "Jan 2022 - Juil 2022",
-      course: "Java Full-Stack Developer",
-      institution: "SarayaTech Senegal",
-      logo: "https://media.licdn.com/dms/image/v2/C4E0BAQHXRteH4IgSGw/company-logo_200_200/company-logo_200_200/0/1675459024192?e=1743033600&v=beta&t=CkkxGC3Kr0yVyzQ7HGoidKGU6KHKQ4hXmEKCOzVsuCc",
-    },
-  ];
-  return (
-    <div className="resume-widget educator">
-      {educationsData.map(({ logo, institution, period, course }, index) => (
-        <article key={index} className="resume-item">
-          <div className="d-flex justify-content-between">
-            {/* Period */}
-            <div className="period">
-              <Calendar className="w-5 h-5" />
-              <span>{period}</span>
-            </div>
-            {/* Institute Logo */}
-            <div className="institute-logo">
-              <img src={logo} alt={`${institution} logo`} width={64} />
-            </div>
-          </div>
+// const EducatorWidget = () => {
+//   const educationsData = [
+//     {
+//       period: "2020 - 2023",
+//       course: "Bechalor's Degree in Computer Science",
+//       institution: "Université Numérique Cheikh Hamidou Kane (UNCHK)",
+//       logo: "https://media.licdn.com/dms/image/v2/D4E0BAQFPgnXXtnQcrQ/company-logo_200_200/company-logo_200_200/0/1692698637205?e=1743033600&v=beta&t=_vnNVQPr_J8kOeY5MvqPDf9Uo9ZZ61AdF6g4xnz61Ic",
+//     },
+//     {
+//       period: "Nov 2024",
+//       course: "Software Engineering Essentials",
+//       institution: "Coursera",
+//       logo: "https://media.licdn.com/dms/image/v2/C4D0BAQGexnfBxeEG-g/company-logo_100_100/company-logo_100_100/0/1630530042036/coursera_logo?e=1743033600&v=beta&t=KW9eonmjcv6Eo2Y6hSFWSiJ8phtNl9vcKJnLDJSTcYQ",
+//     },
+//     {
+//       period: "Jan 2022 - Juil 2022",
+//       course: "Java Full-Stack Developer",
+//       institution: "SarayaTech Senegal",
+//       logo: "https://media.licdn.com/dms/image/v2/C4E0BAQHXRteH4IgSGw/company-logo_200_200/company-logo_200_200/0/1675459024192?e=1743033600&v=beta&t=CkkxGC3Kr0yVyzQ7HGoidKGU6KHKQ4hXmEKCOzVsuCc",
+//     },
+//   ];
+//   return (
+//     <div className="resume-widget educator">
+//       {educationsData.map(({ logo, institution, period, course }, index) => (
+//         <article key={index} className="resume-item">
+//           <div className="d-flex justify-content-between">
+//             {/* Period */}
+//             <div className="period">
+//               <Calendar className="w-5 h-5" />
+//               <span>{period}</span>
+//             </div>
+//             {/* Institute Logo */}
+//             <div className="institute-logo">
+//               <img src={logo} alt={`${institution} logo`} width={64} />
+//             </div>
+//           </div>
 
-          {/* Course Name */}
-          <div className="course">
-            <GraduationCap className="w-6 h-6 text-purple-600" />
-            <h3 className="title">{course}</h3>
-          </div>
+//           {/* Course Name */}
+//           <div className="course">
+//             <GraduationCap className="w-6 h-6 text-purple-600" />
+//             <h3 className="title">{course}</h3>
+//           </div>
 
-          {/* Institution */}
-          <div className="institute">
-            <Building2 className="w-5 h-5" />
-            <p>{institution}</p>
-          </div>
-        </article>
-      ))}
-    </div>
-  );
-};
+//           {/* Institution */}
+//           <div className="institute">
+//             <Building2 className="w-5 h-5" />
+//             <p>{institution}</p>
+//           </div>
+//         </article>
+//       ))}
+//     </div>
+//   );
+// };
 
 const Experiences = () => {
   return (
@@ -184,7 +156,6 @@ const Experiences = () => {
                     city,
                     state,
                     country,
-                    url,
                     thumbnail,
                   },
                   i
@@ -199,7 +170,6 @@ const Experiences = () => {
                     city={city}
                     state={state}
                     country={country}
-                    url={url}
                     thumbnail={thumbnail}
                   />
                 )

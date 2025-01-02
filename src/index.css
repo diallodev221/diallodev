@@ -414,7 +414,7 @@ a h6:hover {
   top: 50%;
   right: 10px;
   position: absolute;
-  background: url(../img/icons/down-arrow.svg);
+  background: url('/img/icons/down-arrow.svg');
   background-position: center;
   background-size: cover;
   border: none;
@@ -469,7 +469,6 @@ body.loaded {
   -ms-flex-pack: center;
   justify-content: center;
   background: transparent;
-  z-index: 99999999999999;
 }
 
 .preloader svg {
@@ -769,7 +768,6 @@ body.loaded {
   -webkit-transition: -webkit-transform 0.3s ease-in-out;
   transition: -webkit-transform 0.3s ease-in-out;
   -o-transition: transform 0.3s ease-in-out;
-  /* transition: transform 0.3s ease-in-out; */
   transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
 }
 .tj-header-area .header-menu ul li.current-menu-ancestor a::before,
@@ -2284,9 +2282,7 @@ body.loaded {
     padding-top: 80px;
     padding-bottom: 50px;
   }
-  .section-header .section-title {
-    font-size: 35px;
-  }
+  
   .resume-section .resume-item {
     margin-right: 0;
     padding: 20px 15px;
@@ -2697,9 +2693,6 @@ body.loaded {
     }
   }
 
-  /* .section-header .section-title {
-    font-size: 30px;
-  } */
   .resume-section .resume-item {
     margin-right: 0;
     padding: 20px 15px;
