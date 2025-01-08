@@ -60,6 +60,48 @@ const Input = ({
   );
 };
 
+const SelectInput = ({
+  services,
+  name,
+  value,
+  onChange,
+  onBlur,
+  error,
+  helperText,
+}: {
+  services: string[];
+  name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  onBlur: (e: React.FocusEvent<HTMLSelectElement>) => void;
+  error: boolean;
+  helperText: string;
+}) => {
+  return (
+    <div className="form_group">
+      <select
+        name={name}
+        className="tj-nice-select"
+        value={value}
+        onChange={onChange}
+        onBlur={onBlur}
+      >
+        <option value="" label="Choose Service">
+          Choose Service
+        </option>
+        {services.map((service) => (
+          <option key={service} value={service}>
+            {service}
+          </option>
+        ))}
+      </select>
+      {error ? (
+        <span className="text-danger">{helperText}</span>
+      ) : null}
+    </div>
+  );
+};
+
 const ContactFormBox = () => {
   const toastId = useRef<Id | null>(null);
   // services
@@ -92,7 +134,6 @@ const ContactFormBox = () => {
       .email("Invalid email format")
       .required("Email is required"),
     phone: yup.string().required("Phone number is required"),
-    // service: yup.string().oneOf(services, "Invalid option").required("Service is required"),
     message: yup.string().required("Message name is required"),
   });
 
@@ -108,7 +149,7 @@ const ContactFormBox = () => {
     validationSchema: contactFormValidation,
     onSubmit: (values, { resetForm }) => {
       toastId.current = toast.loading("Sending message...", { delay: 500 });
-      console.log(values);
+       console.log(values.service);
       emailjs
         .sendForm(
           serviceId,
@@ -209,23 +250,15 @@ const ContactFormBox = () => {
             </div>
             {/* choose service */}
             <div className="col-12">
-              <div className="form_group">
-                <select
-                  id="service"
-                  className="tj-nice-select"
-                  onChange={formik.handleChange}
-                  value={formik.values.service}
-                >
-                  <option value="" disabled hidden>
-                    Choose Service
-                  </option>
-                  {services.map((service) => (
-                    <option key={service} value={service}>
-                      {service}
-                    </option>
-                  ))}
-                </select>
-              </div>
+              <SelectInput
+                name="service"
+                value={formik.values.service}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                services={services}
+                error={!!formik.touched.service && !!formik.errors.service}
+                helperText={formik.errors.service ?? ""}
+              />
             </div>
             {/* message */}
             <div className="col-12">
