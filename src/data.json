@@ -51,7 +51,7 @@
   "links": [
     { "href": "#services", "label": "Services" },
     { "href": "#works", "label": "Works" },
-    { "href": "#resume", "label": "Resume" },
+    { "href": "#experience", "label": "Experiences" },
     { "href": "#skills", "label": "Skills" },
     { "href": "#contact", "label": "Contact" }
   ],

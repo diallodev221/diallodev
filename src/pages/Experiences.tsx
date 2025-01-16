@@ -134,7 +134,7 @@ const ExperienceWidget = ({
 
 const Experiences = () => {
   return (
-    <section className="resume-section" id="resume">
+    <section className="resume-section" id="experience">
       <div className="container">
         <div className="resume-container">
           {Object.getOwnPropertyNames(experience).map((title, id) => (

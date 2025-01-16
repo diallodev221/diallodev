@@ -20,39 +20,32 @@ const Preloader = () => {
       delay: 1.5,
       y: -100,
       opacity: 0,
-    })
-      .to(svg, {
-        duration: 0.5,
-        attr: { d: curve },
-        ease: "power2.easeIn",
-      })
-      .to(svg, {
-        duration: 0.5,
-        attr: { d: flat },
-        ease: "power2.easeOut",
-      })
-      .to(".preloader", {
-        y: -1500,
-      })
-      .to(".preloader", {
-        zIndex: -1,
-        display: "none",
-      });
+    });
+    tl.to(svg, {
+      duration: 0.5,
+      attr: { d: curve },
+      ease: "power2.easeIn",
+    }).to(svg, {
+      duration: 0.5,
+      attr: { d: flat },
+      ease: "power2.easeOut",
+    });
+    tl.to(".preloader", {
+      y: -1500,
+    }).to(".preloader", {
+      zIndex: -1,
+      display: "none",
+    });
   }, []);
 
   const startStrokeAnimation = (svgText: Element | null) => {
-   if (svgText) {
-     svgText.classList.add("animate-stroke");
-   }
+    if (svgText) svgText.classList.add("animate-stroke");
   };
 
   return (
     <div className="preloader">
-      <svg ref={svgRef} viewBox="0 0 1000 1000" preserveAspectRatio="none">
-        <path
-          id="preloaderSvg"
-          d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"
-        ></path>
+      <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <path ref={svgRef} d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
       </svg>
 
       <div className="preloader-heading">

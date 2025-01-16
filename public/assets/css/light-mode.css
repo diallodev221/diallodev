@@ -28,6 +28,11 @@ body.light-mode {
 }
 /* END: Theme Default CSS */
 
+/* PRELOAD LIGTH */
+.light-mode .preloader svg {
+	fill: var(--tj-white);
+}
+
 
 /*
 * ===============================

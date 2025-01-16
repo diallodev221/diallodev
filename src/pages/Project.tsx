@@ -23,7 +23,6 @@ const ContentButton = ({
       <i className="flaticon-up-right-arrow" aria-hidden="true"></i>
       <button
         className="portfolio-link"
-        // onClick={onOpenModal}
         aria-label={`View details about ${title}`}
         data-mfp-src="#portfolio-wrapper"
       ></button>
